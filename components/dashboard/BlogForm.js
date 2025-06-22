@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import imageCompression from "browser-image-compression";
 import { doc, setDoc, collection, Timestamp } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { db, storage } from "@/config/firebase.config";
+import { db } from "@/config/firebase.config";
+import { useAuth } from "@/AuthContext";
 
 // Helper function to generate a unique ID
 const generateUniqueId = () => {
@@ -14,10 +14,11 @@ const generateUniqueId = () => {
   return `${timestamp}-${randomStr}`;
 };
 
-export default function CaseStudyForm({ caseStudy, onClose, onSuccess }) {
+export default function BlogForm({ blog, onClose, onSuccess }) {
+  const { user } = useAuth();
   const [formData, setFormData] = useState({
     title: "",
-    description: "",
+    content: "",
     tags: "",
     imageFile: null,
     imageUrl: "",
@@ -27,16 +28,16 @@ export default function CaseStudyForm({ caseStudy, onClose, onSuccess }) {
   const [isCompressing, setIsCompressing] = useState(false);
 
   useEffect(() => {
-    if (caseStudy) {
+    if (blog) {
       setFormData({
-        title: caseStudy.title || "",
-        description: caseStudy.description || "",
-        tags: caseStudy.tags ? caseStudy.tags.join(", ") : "",
-        imageUrl: caseStudy.imageUrl || "",
+        title: blog.title || "",
+        content: blog.content || "",
+        tags: blog.tags ? blog.tags.join(", ") : "",
+        imageUrl: blog.imageUrl || "",
         imageFile: null,
       });
     }
-  }, [caseStudy]);
+  }, [blog]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -55,15 +56,14 @@ export default function CaseStudyForm({ caseStudy, onClose, onSuccess }) {
         useWebWorker: true,
       };
       const compressedFile = await imageCompression(file, options);
-      // Upload to Cloudinary
-      const formData = new FormData();
-      formData.append("file", compressedFile);
-      formData.append("upload_preset", "unsigned_preset");
+      const cloudFormData = new FormData();
+      cloudFormData.append("file", compressedFile);
+      cloudFormData.append("upload_preset", "unsigned_preset");
       const res = await fetch(
         "https://api.cloudinary.com/v1_1/dlcpaiziv/image/upload",
         {
           method: "POST",
-          body: formData,
+          body: cloudFormData,
         }
       );
       const data = await res.json();
@@ -87,33 +87,42 @@ export default function CaseStudyForm({ caseStudy, onClose, onSuccess }) {
     setLoading(true);
     setError("");
 
+    if (!user) {
+      setError("You must be logged in to create a post.");
+      setLoading(false);
+      return;
+    }
+
     try {
-      const caseStudyData = {
+      const blogData = {
         title: formData.title,
-        description: formData.description,
+        content: formData.content,
         tags: formData.tags
           .split(",")
           .map((tag) => tag.trim())
           .filter((tag) => tag),
         imageUrl: formData.imageUrl,
         createdAt: Timestamp.now(),
+        author: {
+          name: user.displayName || user.email,
+          uid: user.uid,
+        },
       };
 
-      // Update or create document
-      if (caseStudy) {
-        await setDoc(doc(db, "case_studies", caseStudy.id), caseStudyData, {
+      if (blog) {
+        await setDoc(doc(db, "blogs", blog.id), blogData, {
           merge: true,
         });
       } else {
         const uniqueId = generateUniqueId();
-        await setDoc(doc(db, "case_studies", uniqueId), caseStudyData);
+        await setDoc(doc(db, "blogs", uniqueId), blogData);
       }
 
       onSuccess();
       onClose();
     } catch (error) {
-      console.error("Error saving case study:", error);
-      setError("Failed to save case study. Please try again.");
+      console.error("Error saving blog:", error);
+      setError("Failed to save blog post. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -124,11 +133,11 @@ export default function CaseStudyForm({ caseStudy, onClose, onSuccess }) {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-gray-800 rounded-xl shadow-lg p-6 w-full max-w-2xl text-white"
+        className="bg-gray-800 rounded-xl shadow-lg p-6 w-full max-w-lg md:max-w-2xl lg:max-w-4xl text-white"
       >
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-bold text-white">
-            {caseStudy ? "Edit Case Study" : "Add New Case Study"}
+            {blog ? "Edit Blog Post" : "Add New Blog Post"}
           </h2>
           <button onClick={onClose} className="text-gray-400 hover:text-white">
             &times;
@@ -158,14 +167,14 @@ export default function CaseStudyForm({ caseStudy, onClose, onSuccess }) {
 
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-1">
-              Description
+              Content
             </label>
             <textarea
-              name="description"
-              value={formData.description}
+              name="content"
+              value={formData.content}
               onChange={handleChange}
               required
-              rows={4}
+              rows={10}
               className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-purple-500 focus:border-purple-500 bg-gray-700 text-white"
             ></textarea>
           </div>
@@ -185,7 +194,7 @@ export default function CaseStudyForm({ caseStudy, onClose, onSuccess }) {
 
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-1">
-              Image
+              Featured Image
             </label>
             <div className="relative">
               <input
@@ -227,7 +236,7 @@ export default function CaseStudyForm({ caseStudy, onClose, onSuccess }) {
                 ? "Compressing..."
                 : loading
                 ? "Saving..."
-                : "Save"}
+                : "Save Post"}
             </button>
           </div>
         </form>

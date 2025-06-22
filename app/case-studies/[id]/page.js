@@ -114,7 +114,7 @@ export default function CaseStudyDetailPage({ params }) {
               alt={caseStudy.title}
               width={1200}
               height={675}
-              className="w-full h-auto object-cover"
+              className="w-full h-auto max-h-[450px] object-cover"
               priority
             />
           )}

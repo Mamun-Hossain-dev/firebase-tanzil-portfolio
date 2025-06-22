@@ -1,16 +1,23 @@
 import { motion } from "framer-motion";
+import { Menu } from "lucide-react";
 
-export default function Topbar({ user }) {
+export default function Topbar({ user, toggleSidebar }) {
   return (
-    <header className="bg-white shadow-sm">
+    <header className="bg-gray-800 shadow-sm">
       <div className="flex items-center justify-between px-4 py-3 sm:px-6">
-        <div></div> {/* Spacer */}
+        <button
+          onClick={toggleSidebar}
+          className="text-gray-300 hover:text-white md:hidden"
+        >
+          <Menu className="h-6 w-6" />
+        </button>
+        <div className="flex-1"></div> {/* Spacer */}
         <div className="flex items-center space-x-4">
           <div className="text-right">
-            <p className="text-sm font-medium text-gray-900">
+            <p className="text-sm font-medium text-gray-100">
               {user?.displayName || user?.email}
             </p>
-            <p className="text-xs text-gray-500">Admin</p>
+            <p className="text-xs text-gray-400">Admin</p>
           </div>
 
           <div className="relative">

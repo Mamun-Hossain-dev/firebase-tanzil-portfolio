@@ -40,7 +40,7 @@ export default function LatestWorksPage() {
   const handleDelete = async (work) => {
     if (confirm("Are you sure you want to delete this work?")) {
       try {
-        if (work.imageUrl) {
+        if (work.imageUrl && !work.imageUrl.includes("cloudinary.com")) {
           const imageRef = ref(storage, work.imageUrl);
           await deleteObject(imageRef);
         }

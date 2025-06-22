@@ -8,7 +8,6 @@ import { db } from "../../config/firebase.config";
 
 export default function DashboardPage() {
   const [stats, setStats] = useState({
-    users: 0,
     caseStudies: 0,
     latestWorks: 0,
   });
@@ -18,7 +17,6 @@ export default function DashboardPage() {
     const fetchStats = async () => {
       try {
         // Fetch users count
-        const usersSnapshot = await getDocs(collection(db, "users"));
         const caseStudiesSnapshot = await getDocs(
           collection(db, "case_studies")
         );
@@ -27,7 +25,6 @@ export default function DashboardPage() {
         );
 
         setStats({
-          users: usersSnapshot.size,
           caseStudies: caseStudiesSnapshot.size,
           latestWorks: latestWorksSnapshot.size,
         });
@@ -58,13 +55,7 @@ export default function DashboardPage() {
           </span>
         </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <StatCard
-            title="Total Users"
-            value={stats.users}
-            description="Registered users"
-            icon="👥"
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <StatCard
             title="Case Studies"
             value={stats.caseStudies}

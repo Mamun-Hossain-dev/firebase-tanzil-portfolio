@@ -25,9 +25,4 @@
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
-  <url>
-    <loc>https://tanjil-hossain.com/register</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
-  </url>
 </urlset> 

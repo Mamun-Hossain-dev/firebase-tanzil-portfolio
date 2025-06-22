@@ -105,6 +105,7 @@ export default function CaseStudiesPage() {
                       .split(",")
                       .map((tag) => tag.trim())
                       .filter(Boolean);
+
                 return (
                   <Link
                     key={study.id}
@@ -115,10 +116,9 @@ export default function CaseStudiesPage() {
                       <Image
                         src={study.imageUrl}
                         alt={study.title}
-                        width={120}
-                        height={80}
-                        style={{ width: 120, height: "auto" }}
-                        className="rounded-lg shadow"
+                        width={500}
+                        height={300}
+                        className="w-full h-48 object-cover"
                       />
                     ) : (
                       <div className="bg-gray-800 w-full h-48 flex items-center justify-center">
