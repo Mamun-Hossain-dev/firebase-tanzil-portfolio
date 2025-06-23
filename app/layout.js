@@ -4,11 +4,11 @@ import Script from "next/script";
 
 export const metadata = {
   metadataBase: new URL("https://tanzil-portfolio-main.vercel.app"),
-  title: "Tanzil Hossain - Digital Marketing Expert",
+  title: "Tanjil Hossain - Digital Marketing Expert",
   description:
     "Tanzil Hossain's portfolio showcasing expertise in Facebook Marketing, Google Marketing, Web Analytics, and Social Media Marketing. Let's start a conversation about your project.",
   keywords: [
-    "Tanzil Hossain",
+    "Tanjil Hossain",
     "Digital Marketing",
     "SEO",
     "Facebook Marketing",
@@ -18,17 +18,17 @@ export const metadata = {
     "Portfolio",
   ],
   openGraph: {
-    title: "Tanzil Hossain - Digital Marketing Expert",
+    title: "Tanjil Hossain - Digital Marketing Expert",
     description:
       "Expert in driving growth through digital marketing strategies.",
     url: "https://tanzil-portfolio-main.vercel.app",
-    siteName: "Tanzil Hossain Portfolio",
+    siteName: "Tanjil Hossain Portfolio",
     images: [
       {
         url: "/images/Tanzilhossain.jpg",
         width: 800,
         height: 600,
-        alt: "Tanzil Hossain Profile",
+        alt: "Tanjil Hossain Profile",
       },
     ],
     locale: "en_US",
@@ -41,6 +41,11 @@ export const metadata = {
       "Expert in driving growth through digital marketing strategies.",
     creator: "@mdtanjilhosain",
     images: ["/images/Tanzilhossain.jpg"],
+  },
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
   },
 };
 
