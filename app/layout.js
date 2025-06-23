@@ -6,7 +6,7 @@ export const metadata = {
   metadataBase: new URL("https://tanzil-portfolio-main.vercel.app"),
   title: "Tanjil Hossain - Digital Marketing Expert",
   description:
-    "Tanzil Hossain's portfolio showcasing expertise in Facebook Marketing, Google Marketing, Web Analytics, and Social Media Marketing. Let's start a conversation about your project.",
+    "Tanjil Hossain's portfolio showcasing expertise in Facebook Marketing, Google Marketing, Web Analytics, and Social Media Marketing. Let's start a conversation about your project.",
   keywords: [
     "Tanjil Hossain",
     "Digital Marketing",
@@ -36,7 +36,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tanzil Hossain - Digital Marketing Expert",
+    title: "Tanjil Hossain - Digital Marketing Expert",
     description:
       "Expert in driving growth through digital marketing strategies.",
     creator: "@mdtanjilhosain",
