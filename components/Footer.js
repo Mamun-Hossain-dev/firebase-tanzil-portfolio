@@ -15,22 +15,22 @@ import {
 const Footer = () => {
   const socialLinks = [
     {
-      icon: <Facebook size={24} />,
+      icon: <Facebook size={32} />,
       url: "https://www.facebook.com/MdTanjilHossaiin/",
       label: "Facebook",
     },
     {
-      icon: <Linkedin size={24} />,
+      icon: <Linkedin size={32} />,
       url: "https://www.linkedin.com/in/mdtanjilhossaiin/",
       label: "LinkedIn",
     },
     {
-      icon: <Twitter size={24} />,
+      icon: <Twitter size={32} />,
       url: "https://x.com/mdtanjilhosain",
       label: "Twitter",
     },
     {
-      icon: <Instagram size={24} />,
+      icon: <Instagram size={32} />,
       url: "https://www.instagram.com/mdtanjilhossaiin/",
       label: "Instagram",
     },

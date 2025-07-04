@@ -142,7 +142,13 @@ export default function CaseStudiesPage() {
                         {study.title}
                       </h2>
                       <p className="text-gray-300 text-sm mb-4 line-clamp-3">
-                        {study.description}
+                        {study.description
+                          .replace(/^#+\s+/gm, "") // Remove markdown headings
+                          .replace(/\*\*(.*?)\*\*/g, "$1") // Remove bold formatting
+                          .replace(/\*(.*?)\*/g, "$1") // Remove italic formatting
+                          .replace(/^\s*[\r\n]/gm, "") // Remove empty lines
+                          .substring(0, 150)}
+                        ...
                       </p>
                       {tagsArray.length > 0 && (
                         <div className="flex flex-wrap gap-2 mt-4">

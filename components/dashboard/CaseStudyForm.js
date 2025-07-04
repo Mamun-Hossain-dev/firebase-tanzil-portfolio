@@ -160,13 +160,46 @@ export default function CaseStudyForm({ caseStudy, onClose, onSuccess }) {
             <label className="block text-sm font-medium text-gray-300 mb-1">
               Description
             </label>
+            <div className="mb-2 text-xs text-gray-400">
+              <p className="mb-1">Formatting Guide:</p>
+              <ul className="list-disc list-inside space-y-1">
+                <li>
+                  Use <strong>## Heading</strong> for main headings
+                </li>
+                <li>
+                  Use <strong>### Subheading</strong> for subheadings
+                </li>
+                <li>
+                  Use <strong>**bold text**</strong> for emphasis
+                </li>
+                <li>
+                  Use <strong>*italic text*</strong> for italics
+                </li>
+                <li>Add blank lines between paragraphs for proper spacing</li>
+              </ul>
+            </div>
             <textarea
               name="description"
               value={formData.description}
               onChange={handleChange}
               required
-              rows={4}
-              className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-purple-500 focus:border-purple-500 bg-gray-700 text-white"
+              rows={12}
+              placeholder="## Project Overview
+
+This is a detailed case study description with proper formatting.
+
+### Challenge
+
+Describe the main challenges faced in this project.
+
+### Solution
+
+Explain the approach and solutions implemented.
+
+### Results
+
+Highlight the key results and outcomes achieved."
+              className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-purple-500 focus:border-purple-500 bg-gray-700 text-white font-mono text-sm"
             ></textarea>
           </div>
 

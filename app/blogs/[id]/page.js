@@ -108,8 +108,52 @@ export default function BlogPostPage() {
               </div>
             )}
 
-            <div className="prose prose-invert prose-lg max-w-none prose-p:text-gray-300 prose-headings:text-white prose-a:text-purple-400 hover:prose-a:text-purple-300 prose-strong:text-white">
-              <ReactMarkdown>{blog.content}</ReactMarkdown>
+            <div className="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed">
+              <ReactMarkdown
+                components={{
+                  h1: ({ children }) => (
+                    <h1 className="text-3xl font-bold text-white mb-6 mt-8 first:mt-0">
+                      {children}
+                    </h1>
+                  ),
+                  h2: ({ children }) => (
+                    <h2 className="text-2xl font-bold text-white mb-4 mt-8 first:mt-0">
+                      {children}
+                    </h2>
+                  ),
+                  h3: ({ children }) => (
+                    <h3 className="text-xl font-semibold text-white mb-3 mt-6 first:mt-0">
+                      {children}
+                    </h3>
+                  ),
+                  p: ({ children }) => (
+                    <p className="text-gray-300 mb-4 leading-relaxed">
+                      {children}
+                    </p>
+                  ),
+                  ul: ({ children }) => (
+                    <ul className="list-disc list-inside mb-4 space-y-2 text-gray-300">
+                      {children}
+                    </ul>
+                  ),
+                  ol: ({ children }) => (
+                    <ol className="list-decimal list-inside mb-4 space-y-2 text-gray-300">
+                      {children}
+                    </ol>
+                  ),
+                  li: ({ children }) => (
+                    <li className="text-gray-300">{children}</li>
+                  ),
+                  strong: ({ children }) => (
+                    <strong className="font-bold text-white">{children}</strong>
+                  ),
+                  em: ({ children }) => (
+                    <em className="italic text-gray-200">{children}</em>
+                  ),
+                }}
+              >
+                {blog.content}
+              </ReactMarkdown>
             </div>
 
             {blog.tags?.length > 0 && (

@@ -79,28 +79,24 @@ const Hero = memo(() => {
     window.location.href = "/contact";
   }, []);
 
-  const handleResumeClick = useCallback(() => {
-    window.open("/Professional%20Minimalist%20CV%20Resume.pdf", "_blank");
-  }, []);
-
   const socialLinks = [
     {
-      icon: <Facebook size={24} />,
+      icon: <Facebook size={32} />,
       url: "https://www.facebook.com/MdTanjilHossaiin/",
       label: "Facebook",
     },
     {
-      icon: <Linkedin size={24} />,
+      icon: <Linkedin size={32} />,
       url: "https://www.linkedin.com/in/mdtanjilhossaiin/",
       label: "LinkedIn",
     },
     {
-      icon: <Twitter size={24} />,
+      icon: <Twitter size={32} />,
       url: "https://x.com/mdtanjilhosain",
       label: "Twitter",
     },
     {
-      icon: <Instagram size={24} />,
+      icon: <Instagram size={32} />,
       url: "https://www.instagram.com/mdtanjilhossaiin/",
       label: "Instagram",
     },
@@ -150,30 +146,16 @@ const Hero = memo(() => {
               I&apos;m an AI-powered, data-driven digital marketer based
               worldwide, helping businesses grow online.
             </motion.p>
-            <motion.div
-              className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-              variants={itemVariants}
+            <motion.button
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
+              onClick={handleConnectClick}
+              className="mt-10 px-8 py-3.5 rounded-xl font-medium bg-gradient-to-r from-purple-600 to-pink-600 text-white transition-all duration-500 bg-size-200 hover:bg-right-bottom cursor-pointer"
+              aria-label="Connect with Tanjil Hossain"
             >
-              <motion.button
-                variants={buttonVariants}
-                whileHover="hover"
-                whileTap="tap"
-                onClick={handleConnectClick}
-                className="px-8 py-3.5 rounded-xl font-medium bg-gradient-to-r from-purple-600 to-pink-600 text-white transition-all duration-500 bg-size-200 hover:bg-right-bottom cursor-pointer"
-                aria-label="Connect with Tanjil Hossain"
-              >
-                Connect with me
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={handleResumeClick}
-                className="px-8 py-3.5 rounded-xl font-medium bg-white/10 border border-white/20 backdrop-blur-lg text-white hover:bg-white/15 transition-all cursor-pointer"
-                aria-label="View Tanjil Hossain's resume"
-              >
-                View Resume
-              </motion.button>
-            </motion.div>
+              Connect with me
+            </motion.button>
             {/* Social Links */}
             <motion.div
               className="mt-10 flex justify-center lg:justify-start gap-6"

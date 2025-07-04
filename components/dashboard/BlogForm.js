@@ -169,13 +169,44 @@ export default function BlogForm({ blog, onClose, onSuccess }) {
             <label className="block text-sm font-medium text-gray-300 mb-1">
               Content
             </label>
+            <div className="mb-2 text-xs text-gray-400">
+              <p className="mb-1">Formatting Guide:</p>
+              <ul className="list-disc list-inside space-y-1">
+                <li>
+                  Use <strong>## Heading</strong> for main headings
+                </li>
+                <li>
+                  Use <strong>### Subheading</strong> for subheadings
+                </li>
+                <li>
+                  Use <strong>**bold text**</strong> for emphasis
+                </li>
+                <li>
+                  Use <strong>*italic text*</strong> for italics
+                </li>
+                <li>Add blank lines between paragraphs for proper spacing</li>
+              </ul>
+            </div>
             <textarea
               name="content"
               value={formData.content}
               onChange={handleChange}
               required
-              rows={10}
-              className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-purple-500 focus:border-purple-500 bg-gray-700 text-white"
+              rows={15}
+              placeholder="## Introduction
+
+This is a sample blog post with proper formatting.
+
+### Key Points
+
+- First point
+- Second point
+- Third point
+
+### Conclusion
+
+This is the conclusion paragraph with proper spacing."
+              className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-purple-500 focus:border-purple-500 bg-gray-700 text-white font-mono text-sm"
             ></textarea>
           </div>
 
