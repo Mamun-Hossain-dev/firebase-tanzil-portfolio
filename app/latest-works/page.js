@@ -131,42 +131,12 @@ export default function LatestWorksPage() {
                     </div>
                   )}
                   <div className="p-6">
-                    <div className="flex justify-between items-start mb-2">
-                      <h2 className="font-bold text-xl text-white">
-                        {work.title}
-                      </h2>
-                      {work.category && (
-                        <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-medium">
-                          {work.category}
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-gray-300 text-sm mb-4 line-clamp-3">
+                    <h2 className="font-bold text-xl text-white mb-3">
+                      {work.title}
+                    </h2>
+                    <p className="text-gray-300 text-base mb-2 whitespace-pre-line">
                       {work.description}
                     </p>
-                    {work.link && (
-                      <a
-                        href={work.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-200"
-                      >
-                        View Project
-                        <svg
-                          className="w-4 h-4 ml-2"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M14 5l7 7m0 0l-7 7m7-7H3"
-                          />
-                        </svg>
-                      </a>
-                    )}
                   </div>
                 </div>
               ))}

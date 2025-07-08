@@ -122,15 +122,7 @@ export default function LatestWorksPage() {
                 <p className="text-gray-400 text-sm mb-3 line-clamp-2">
                   {work.description}
                 </p>
-                <div className="flex justify-between items-center">
-                  <a
-                    href={work.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-purple-600 hover:text-purple-800 text-sm"
-                  >
-                    View Project
-                  </a>
+                <div className="flex justify-end items-center">
                   <div className="flex space-x-2">
                     <button
                       onClick={() => handleEdit(work)}

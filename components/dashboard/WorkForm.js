@@ -18,7 +18,6 @@ export default function WorkForm({ work, onClose, onSuccess }) {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    link: "",
     imageFile: null,
     imageUrl: "",
   });
@@ -31,7 +30,6 @@ export default function WorkForm({ work, onClose, onSuccess }) {
       setFormData({
         title: work.title || "",
         description: work.description || "",
-        link: work.link || "",
         imageUrl: work.imageUrl || "",
         imageFile: null,
       });
@@ -91,7 +89,6 @@ export default function WorkForm({ work, onClose, onSuccess }) {
       const workData = {
         title: formData.title,
         description: formData.description,
-        link: formData.link,
         imageUrl: formData.imageUrl,
         createdAt: Timestamp.now(),
       };
@@ -138,7 +135,7 @@ export default function WorkForm({ work, onClose, onSuccess }) {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-1">
               Title
@@ -149,10 +146,9 @@ export default function WorkForm({ work, onClose, onSuccess }) {
               value={formData.title}
               onChange={handleChange}
               required
-              className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-purple-500 focus:border-purple-500 bg-gray-700 text-white"
+              className="w-full px-3 py-3 border border-gray-600 rounded-lg focus:ring-purple-500 focus:border-purple-500 bg-gray-700 text-white text-base"
             />
           </div>
-
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-1">
               Description
@@ -162,25 +158,10 @@ export default function WorkForm({ work, onClose, onSuccess }) {
               value={formData.description}
               onChange={handleChange}
               required
-              rows={3}
-              className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-purple-500 focus:border-purple-500 bg-gray-700 text-white"
+              rows={5}
+              className="w-full px-3 py-3 border border-gray-600 rounded-lg focus:ring-purple-500 focus:border-purple-500 bg-gray-700 text-white text-base"
             ></textarea>
           </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-1">
-              Project Link
-            </label>
-            <input
-              type="url"
-              name="link"
-              value={formData.link}
-              onChange={handleChange}
-              required
-              className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-purple-500 focus:border-purple-500 bg-gray-700 text-white"
-            />
-          </div>
-
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-1">
               Image
