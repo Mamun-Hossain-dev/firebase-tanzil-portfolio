@@ -90,7 +90,7 @@ export default function BlogPostPage() {
                 {blog.author?.name && (
                   <>
                     <span>&bull;</span>
-                    <p>By {blog.author.name}</p>
+                    <p>By Tanjil Hossain</p>
                   </>
                 )}
               </div>
