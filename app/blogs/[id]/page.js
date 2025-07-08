@@ -108,7 +108,7 @@ export default function BlogPostPage() {
               </div>
             )}
 
-            <div className="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed">
+            <div className="prose prose-invert prose-lg max-w-none text-white font-medium leading-relaxed">
               <ReactMarkdown
                 components={{
                   h1: ({ children }) => (
@@ -127,28 +127,28 @@ export default function BlogPostPage() {
                     </h3>
                   ),
                   p: ({ children }) => (
-                    <p className="text-gray-300 mb-4 leading-relaxed">
+                    <p className="text-white font-medium mb-4 leading-relaxed">
                       {children}
                     </p>
                   ),
                   ul: ({ children }) => (
-                    <ul className="list-disc list-inside mb-4 space-y-2 text-gray-300">
+                    <ul className="list-disc list-inside mb-4 space-y-2 text-white font-medium">
                       {children}
                     </ul>
                   ),
                   ol: ({ children }) => (
-                    <ol className="list-decimal list-inside mb-4 space-y-2 text-gray-300">
+                    <ol className="list-decimal list-inside mb-4 space-y-2 text-white font-medium">
                       {children}
                     </ol>
                   ),
                   li: ({ children }) => (
-                    <li className="text-gray-300">{children}</li>
+                    <li className="text-white font-medium">{children}</li>
                   ),
                   strong: ({ children }) => (
                     <strong className="font-bold text-white">{children}</strong>
                   ),
                   em: ({ children }) => (
-                    <em className="italic text-gray-200">{children}</em>
+                    <em className="italic text-white">{children}</em>
                   ),
                 }}
               >

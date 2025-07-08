@@ -113,8 +113,8 @@ export default function LatestWorkDetailsPage() {
                 />
               </div>
             )}
-            <div className="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed">
-              <p className="text-gray-300 mb-4 leading-relaxed whitespace-pre-line">
+            <div className="prose prose-invert prose-lg max-w-none text-white font-medium leading-relaxed">
+              <p className="text-white font-medium mb-4 leading-relaxed whitespace-pre-line">
                 {work.description}
               </p>
             </div>
