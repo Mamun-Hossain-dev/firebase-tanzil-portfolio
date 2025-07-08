@@ -4,6 +4,7 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/config/firebase.config";
+import { useRouter } from "next/navigation";
 
 const demoWorks = [
   {
@@ -38,6 +39,7 @@ const demoWorks = [
 export default function LatestWorksPage() {
   const [works, setWorks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchWorks = async () => {
@@ -103,7 +105,14 @@ export default function LatestWorksPage() {
               {works.map((work) => (
                 <div
                   key={work.id}
-                  className="bg-white/10 rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 border border-white/10 backdrop-blur-md"
+                  className="bg-white/10 rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 border border-white/10 backdrop-blur-md cursor-pointer"
+                  onClick={() => router.push(`/latest-works/${work.id}`)}
+                  tabIndex={0}
+                  role="button"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter")
+                      router.push(`/latest-works/${work.id}`);
+                  }}
                 >
                   {work.imageUrl ? (
                     <Image

@@ -120,29 +120,29 @@ export default function BlogsPage() {
             <tbody className="bg-gray-800 divide-y divide-gray-700">
               {blogs.map((blog) => (
                 <tr key={blog.id}>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-6 py-4 whitespace-nowrap flex items-center">
+                    <div className="flex space-x-2 mr-3">
+                      <button
+                        onClick={() => handleEdit(blog)}
+                        className="bg-white border border-blue-500 text-blue-600 hover:bg-blue-100 rounded-full p-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        title="Edit"
+                      >
+                        <Pencil className="h-5 w-5" />
+                      </button>
+                      <button
+                        onClick={() => handleDelete(blog)}
+                        className="bg-white border border-red-500 text-red-600 hover:bg-red-100 rounded-full p-1 focus:outline-none focus:ring-2 focus:ring-red-400"
+                        title="Delete"
+                      >
+                        <Trash2 className="h-5 w-5" />
+                      </button>
+                    </div>
                     <Link
                       href={`/blogs/${blog.id}`}
                       className="text-sm font-medium text-gray-100 hover:text-purple-400 transition-colors"
                     >
                       {blog.title}
                     </Link>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    <div className="flex space-x-2">
-                      <button
-                        onClick={() => handleEdit(blog)}
-                        className="text-blue-500 hover:text-blue-700"
-                      >
-                        <Pencil className="h-5 w-5" />
-                      </button>
-                      <button
-                        onClick={() => handleDelete(blog)}
-                        className="text-red-500 hover:text-red-700"
-                      >
-                        <Trash2 className="h-5 w-5" />
-                      </button>
-                    </div>
                   </td>
                 </tr>
               ))}

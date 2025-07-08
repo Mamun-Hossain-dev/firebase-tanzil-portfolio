@@ -3,7 +3,13 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import imageCompression from "browser-image-compression";
-import { doc, setDoc, collection, Timestamp } from "firebase/firestore";
+import {
+  doc,
+  setDoc,
+  collection,
+  Timestamp,
+  deleteDoc,
+} from "firebase/firestore";
 import { db } from "@/config/firebase.config";
 import { useAuth } from "@/AuthContext";
 
@@ -128,6 +134,19 @@ export default function BlogForm({ blog, onClose, onSuccess }) {
     }
   };
 
+  const handleDelete = async () => {
+    if (!blog) return;
+    if (confirm("Are you sure you want to delete this blog post?")) {
+      try {
+        await deleteDoc(doc(db, "blogs", blog.id));
+        onSuccess();
+        onClose();
+      } catch (error) {
+        setError("Failed to delete blog post. Please try again.");
+      }
+    }
+  };
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center z-50 overflow-y-auto pt-10">
       <motion.div
@@ -249,25 +268,23 @@ This is the conclusion paragraph with proper spacing."
             )}
           </div>
 
-          <div className="flex justify-end space-x-3">
-            <button
-              type="button"
-              onClick={onClose}
-              disabled={loading}
-              className="px-4 py-2 text-gray-300 border border-gray-600 rounded-lg hover:bg-gray-700"
-            >
-              Cancel
-            </button>
+          <div className="flex justify-end space-x-2 mt-6">
+            {blog && (
+              <button
+                type="button"
+                onClick={handleDelete}
+                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+                disabled={loading}
+              >
+                Delete
+              </button>
+            )}
             <button
               type="submit"
-              disabled={loading || isCompressing}
-              className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50"
+              className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
+              disabled={loading}
             >
-              {isCompressing
-                ? "Compressing..."
-                : loading
-                ? "Saving..."
-                : "Save Post"}
+              {blog ? "Update" : "Create"}
             </button>
           </div>
         </form>
