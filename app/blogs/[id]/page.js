@@ -108,47 +108,49 @@ export default function BlogPostPage() {
               </div>
             )}
 
-            <div className="prose prose-invert prose-lg max-w-none text-white font-medium leading-relaxed">
+            <div className="prose prose-invert prose-lg max-w-none text-slate-300 font-normal leading-relaxed text-justify">
               <ReactMarkdown
                 components={{
                   h1: ({ children }) => (
-                    <h1 className="text-3xl font-bold text-white mb-6 mt-8 first:mt-0">
+                    <h1 className="text-3xl font-bold text-slate-300 mb-6 mt-8 first:mt-0">
                       {children}
                     </h1>
                   ),
                   h2: ({ children }) => (
-                    <h2 className="text-2xl font-bold text-white mb-4 mt-8 first:mt-0">
+                    <h2 className="text-2xl font-bold text-slate-300 mb-4 mt-8 first:mt-0">
                       {children}
                     </h2>
                   ),
                   h3: ({ children }) => (
-                    <h3 className="text-xl font-semibold text-white mb-3 mt-6 first:mt-0">
+                    <h3 className="text-xl font-semibold text-slate-300 mb-3 mt-6 first:mt-0">
                       {children}
                     </h3>
                   ),
                   p: ({ children }) => (
-                    <p className="text-white font-medium mb-4 leading-relaxed">
+                    <p className="text-slate-300 font-normal mb-4 leading-relaxed text-justify">
                       {children}
                     </p>
                   ),
                   ul: ({ children }) => (
-                    <ul className="list-disc list-inside mb-4 space-y-2 text-white font-medium">
+                    <ul className="list-disc list-inside mb-4 space-y-2 text-slate-300 font-normal">
                       {children}
                     </ul>
                   ),
                   ol: ({ children }) => (
-                    <ol className="list-decimal list-inside mb-4 space-y-2 text-white font-medium">
+                    <ol className="list-decimal list-inside mb-4 space-y-2 text-slate-300 font-normal">
                       {children}
                     </ol>
                   ),
                   li: ({ children }) => (
-                    <li className="text-white font-medium">{children}</li>
+                    <li className="text-slate-300 font-normal">{children}</li>
                   ),
                   strong: ({ children }) => (
-                    <strong className="font-bold text-white">{children}</strong>
+                    <strong className="font-bold text-slate-300">
+                      {children}
+                    </strong>
                   ),
                   em: ({ children }) => (
-                    <em className="italic text-white">{children}</em>
+                    <em className="italic text-slate-300">{children}</em>
                   ),
                 }}
               >
