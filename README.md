@@ -1,15 +1,15 @@
-# Tanzil Hossain - Portfolio Website
+# Tanzil Hossain - Digital Marketing Portfolio
 
-This is the repository for my personal portfolio website, built with Next.js and Firebase. The website showcases my projects, skills, and provides a way for visitors to contact me. It also includes a private dashboard for managing content.
+This is the repository for the personal portfolio website of Tanjil Hossain, an AI-powered, data-driven digital marketer. The site showcases projects, case studies, and services, and provides a dashboard for content management. Built with Next.js, Firebase, and Tailwind CSS, it features modern design, analytics, and secure authentication.
 
 ## Features
 
-- **Portfolio Showcase**: Display latest works and detailed case studies.
-- **User Authentication**: Secure login and registration functionality using Firebase Authentication.
-- **Dashboard**: A private dashboard for me to manage case studies and latest works.
-- **Analytics**: Integrated with Google Analytics to track website traffic and user engagement.
-- **Contact Form**: A functional contact form for visitors to get in touch.
-- **Responsive Design**: Fully responsive layout for all devices.
+- **Portfolio Showcase**: Display of latest works and detailed case studies
+- **User Authentication**: Secure login and registration with Firebase Authentication
+- **Dashboard**: Private dashboard for managing case studies and works
+- **Analytics**: Google Analytics 4 integration for traffic and engagement tracking
+- **Contact Form**: Visitors can get in touch directly
+- **Responsive Design**: Optimized for all devices
 
 ## Technologies Used
 
@@ -20,7 +20,7 @@ This is the repository for my personal portfolio website, built with Next.js and
 
 ## Getting Started
 
-To get a local copy up and running, follow these simple steps.
+To get a local copy up and running, follow these steps:
 
 ### Prerequisites
 
@@ -29,31 +29,32 @@ To get a local copy up and running, follow these simple steps.
 
 ### Installation
 
-1.  Clone the repo
-    ```sh
-    git clone https://github.com/your_username/firebase-tanzil-portfolio.git
-    ```
-2.  Navigate to the project directory
-    ```sh
-    cd firebase-tanzil-portfolio
-    ```
-3.  Install NPM packages
-    ```sh
-    npm install
-    ```
-4.  Set up your environment variables. See the section below.
-5.  Run the development server
-    ```sh
-    npm run dev
-    ```
+1. **Clone the repository**
+   ```sh
+   git clone https://github.com/your_username/firebase-tanzil-portfolio.git
+   ```
+2. **Navigate to the project directory**
+   ```sh
+   cd firebase-tanzil-portfolio
+   ```
+3. **Install dependencies**
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
+4. **Set up environment variables**
+   - Copy `config/env.example` to `.env.local` and fill in your Firebase and Analytics credentials.
+5. **Run the development server**
+   ```sh
+   npm run dev
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your `.env.local` file. Create this file in the root of your project.
-
-You can use `env.example` as a template.
+Create a `.env.local` file in the root directory. Use `config/env.example` as a template. Example:
 
 ```
 # Firebase Configuration
@@ -68,14 +69,18 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 NEXT_PUBLIC_GA_ID=
 ```
 
-You need to create a Firebase project to get the Firebase configuration values.
-
 ## Deployment
 
-This application is deployed on [Vercel](https://vercel.com/). Any push to the `main` branch will trigger a new deployment.
+This application is deployed on [Vercel](https://vercel.com/). Pushes to the `main` branch trigger automatic deployments.
 
 ## Contact
 
-Tanzil Hossain - [@tanzil_hossain](https://twitter.com/tanzil_hossain) - tanzilhossain@example.com
+**Tanjil Hossain**  
+[Portfolio Website](https://tanjil-hossain.com)  
+[Twitter](https://twitter.com/mdtanjilhosain)
 
-Project Link: [https://github.com/your_username/firebase-tanzil-portfolio](https://github.com/your_username/firebase-tanzil-portfolio)
+For inquiries, use the contact form on the website or email: tanzilhossain@example.com
+
+---
+
+© 2024 Tanjil Hossain. All rights reserved.
