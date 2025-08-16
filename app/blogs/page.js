@@ -64,7 +64,7 @@ export default function BlogsPage() {
                 <Link
                   key={blog.id}
                   href={`/blogs/${blog.id}`}
-                  className="block bg-white/5 rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 border border-white/10 backdrop-blur-md group"
+                  className="flex flex-col bg-white/5 rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 border border-white/10 backdrop-blur-md group"
                 >
                   <div className="overflow-hidden">
                     {blog.imageUrl ? (
@@ -93,31 +93,40 @@ export default function BlogsPage() {
                       </div>
                     )}
                   </div>
-                  <div className="p-6">
-                    <h2 className="font-bold text-xl mb-2 text-white">
-                      {blog.title}
-                    </h2>
-                    <p className="text-gray-400 text-sm mb-4 line-clamp-3">
-                      {blog.content
-                        .replace(/^#+\s+/gm, "") // Remove markdown headings
-                        .replace(/\*\*(.*?)\*\*/g, "$1") // Remove bold formatting
-                        .replace(/\*(.*?)\*/g, "$1") // Remove italic formatting
-                        .replace(/^\s*[\r\n]/gm, "") // Remove empty lines
-                        .substring(0, 150)}
-                      ...
-                    </p>
-                    {blog.tags?.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mt-4">
-                        {blog.tags.map((tag, idx) => (
-                          <span
-                            key={idx}
-                            className="bg-purple-600/50 text-purple-300 px-3 py-1 rounded-full text-xs font-medium"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div>
+                      <h2 className="font-bold text-xl mb-2 text-white">
+                        {blog.title}
+                      </h2>
+                      <p className="text-gray-400 text-sm mb-4 line-clamp-3">
+                        {blog.content
+                          .replace(/^#+\s+/gm, "") // Remove markdown headings
+                          .replace(/\*\*(.*?)\*\*/g, "$1") // Remove bold formatting
+                          .replace(/\*(.*?)\*/g, "$1") // Remove italic formatting
+                          .replace(/^\s*[\r\n]/gm, "") // Remove empty lines
+                          .substring(0, 150)}
+                        ...
+                      </p>
+                    </div>
+                    <div className="mt-auto">
+                      {blog.tags?.length > 0 && (
+                        <div className="flex flex-wrap items-center gap-2 mt-4">
+                          {blog.tags.slice(0, 5).map((tag, idx) => (
+                            <span
+                              key={idx}
+                              className="bg-purple-600/50 text-purple-300 px-3 py-1 rounded-full text-xs font-medium"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                          {blog.tags.length > 5 && (
+                            <span className="text-gray-400 text-xs font-medium">
+                              + {blog.tags.length - 5} more
+                            </span>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </Link>
               ))}

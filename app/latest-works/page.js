@@ -105,7 +105,7 @@ export default function LatestWorksPage() {
               {works.map((work) => (
                 <div
                   key={work.id}
-                  className="bg-white/10 rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 border border-white/10 backdrop-blur-md cursor-pointer"
+                  className="flex flex-col bg-white/10 rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 border border-white/10 backdrop-blur-md cursor-pointer"
                   onClick={() => router.push(`/latest-works/${work.id}`)}
                   tabIndex={0}
                   role="button"
@@ -139,13 +139,20 @@ export default function LatestWorksPage() {
                       </svg>
                     </div>
                   )}
-                  <div className="p-6">
-                    <h2 className="font-bold text-xl text-white mb-3">
-                      {work.title}
-                    </h2>
-                    <p className="text-gray-300 text-base mb-2 whitespace-pre-line">
-                      {work.description}
-                    </p>
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div>
+                      <h2 className="font-bold text-xl text-white mb-3">
+                        {work.title}
+                      </h2>
+                      <p className="text-gray-300 text-base mb-4 line-clamp-3">
+                        {work.description}
+                      </p>
+                    </div>
+                    <div className="mt-auto pt-4">
+                      <span className="text-blue-400 group-hover:text-blue-300 font-semibold transition-colors duration-200">
+                        Read More &rarr;
+                      </span>
+                    </div>
                   </div>
                 </div>
               ))}
