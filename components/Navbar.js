@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@/AuthContext";
 import { useRouter, usePathname } from "next/navigation";
 import { User as UserIcon, LogOut } from "lucide-react";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -55,10 +56,17 @@ const Navbar = () => {
             className="flex items-center space-x-2"
           >
             <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-1 rounded-lg">
-              <div className="bg-gray-900 p-2 rounded-md">
-                <h2 className="text-xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500 bg-clip-text text-transparent">
+              <div className="bg-gray-900 rounded-md">
+                {/* <h2 className="text-xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500 bg-clip-text text-transparent">
                   Tanjil Hossain
-                </h2>
+                </h2> */}
+                <Image
+                  src={"/images/tanjil-logo.jpeg"}
+                  alt="Tanjil Hossain"
+                  width={100}
+                  height={100}
+                  className="w-16 h-5 md:w-32 md:h-12 rounded-md object-cover"
+                />
               </div>
             </div>
           </motion.div>
