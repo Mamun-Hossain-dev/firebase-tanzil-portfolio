@@ -57,7 +57,8 @@ const Navbar = () => {
           >
             <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-1 rounded-lg">
               <div className="bg-gray-900 rounded-md">
-                {/* <h2 className="text-xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500 bg-clip-text text-transparent">
+                {/* <h2 className="text-xl font-bold ==========================
+                bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500 bg-clip-text text-transparent">
                   Tanjil Hossain
                 </h2> */}
                 <Image
